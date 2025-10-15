@@ -1,0 +1,210 @@
+/* Import a modern font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+/* Define a futuristic color palette and animations */
+:root {
+    --background-start: #111827;
+    --background-end: #1a0b2e;
+    --surface-color: rgba(23, 27, 41, 0.6);
+    --primary-glow: #6366f1;
+    --secondary-glow: #a855f7;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --bot-bubble: #374151;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes grid-pan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Main Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--background-start), var(--background-end));
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Add a subtle animated grid background */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: grid-pan 60s linear infinite;
+    z-index: -1;
+}
+
+/* Frosted Glass Chat Container */
+.chat-container {
+    width: 420px;
+    height: 90vh;
+    max-height: 700px;
+    background: var(--surface-color);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Glowing Header */
+.chat-header {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(90deg, transparent, var(--primary-glow), transparent) 1;
+}
+
+.chat-header h2 {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 500;
+    text-shadow: 0 0 8px var(--primary-glow);
+}
+
+.chat-header span {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 15px;
+}
+
+.chat-header span::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #22c55e;
+}
+
+
+/* Chat Message Area */
+.chat-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Custom Scrollbar */
+.chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+.chat-box::-webkit-scrollbar-thumb {
+    background: var(--primary-glow);
+    border-radius: 3px;
+}
+.chat-box::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-glow);
+}
+
+/* Individual Messages */
+.message {
+    padding: 12px 18px;
+    border-radius: 18px;
+    max-width: 85%;
+    line-height: 1.5;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.bot-message {
+    background-color: var(--bot-bubble);
+    color: var(--text-primary);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.user-message {
+    background: linear-gradient(90deg, var(--primary-glow), var(--secondary-glow));
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+/* Chat Input Area */
+.chat-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#user-input {
+    flex-grow: 1;
+    background-color: var(--bot-bubble);
+    border: 1px solid transparent;
+    border-radius: 15px;
+    padding: 12px 18px;
+    font-size: 1em;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#user-input:focus {
+    border-color: var(--primary-glow);
+}
+
+#send-btn {
+    background: var(--primary-glow);
+    border: none;
+    width: 48px;
+    height: 48px;
+    margin-left: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+#send-btn:hover {
+    background: var(--secondary-glow);
+    transform: scale(1.1) rotate(15deg);
+}
+
+#send-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+    transform: translateX(2px);
+}

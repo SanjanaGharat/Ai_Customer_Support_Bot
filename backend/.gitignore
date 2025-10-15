@@ -1,0 +1,21 @@
+# Python virtual environment
+/venv
+venv/
+
+# Python cache files and artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables file
+# IMPORTANT: This file contains your secret API key. Never commit it.
+.env
+
+# Operating System generated files
+.DS_Store
+Thumbs.db
+
+# IDE configuration folders (optional but good practice)
+.vscode/
+.idea/
