@@ -1,8 +1,8 @@
 # AI Customer Support Bot 🤖
 
-**Project By:** Sanjana Sajan Gharat 
-**University:** VIT BHOPAL UNIVERSITY 
-**Registration Number:** 22BCE11063
+**Project By:** Sanjana Sajan Gharat <br>
+**University:** VIT BHOPAL UNIVERSITY <br>
+**Registration Number:** 22BCE11063<br>
 
 This project is a simulation of an advanced AI-powered customer support chatbot. It uses Google's Gemini Pro model to answer frequently asked questions, maintain conversation context, and escalate to a human agent when necessary. The application features a modern, futuristic chat interface and a robust Python Flask backend.
 
